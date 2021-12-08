@@ -39,6 +39,7 @@ const showHideForm = (zIndex = 1, visibility = 'visible') => {
 }
 
 const addBookToLibrary = (book) => myLybrary.push(book);
+
 const removeBookFromLibrary = (bookTitle) => {
   myLybrary.forEach((book) => {
     if(book.title === bookTitle) {
@@ -60,7 +61,9 @@ form.addEventListener('submit', function(event) {
 
 //RENDER BOOKS
 
-
+myLybrary.forEach((book) => {
+  
+})
 console.log(myLybrary);
 
 

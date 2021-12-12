@@ -56,8 +56,11 @@ const saveLibraryToLocalStorage = (library) => {
 }
 
 const loadLibraryFromLocalStorage = () => {
-  library.books = [...JSON.parse(localStorage.getItem('library'))];
-  console.log(library.books);
+  if(localStorage.getItem('library') === null) {
+    library.books = []
+  } else {
+    library.books = [...JSON.parse(localStorage.getItem('library'))];
+  }
 };
 
 //EVENT LISTENERS

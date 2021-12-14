@@ -19,7 +19,7 @@ class Library {
   removeBook = (bookTitle) => {
     this.books.forEach((book) => {
       if(book.title === bookTitle) {
-        myLybrary.splice(myLybrary.indexOf(book), 1);
+        this.books.splice(this.books.indexOf(book), 1);
       }
     })
   }
@@ -57,7 +57,7 @@ const saveLibraryToLocalStorage = (library) => {
 
 const loadLibraryFromLocalStorage = () => {
   if(localStorage.getItem('library') === null) {
-    library.books = []
+    library.books = [];
   } else {
     library.books = [...JSON.parse(localStorage.getItem('library'))];
   }
@@ -112,10 +112,14 @@ library.books.forEach((book) => {
   card.appendChild(removeBookButton);
 
   readBookButton.addEventListener('click', () => {
-    book.isRead = !book.isRead
-    console.log(book.isRead)
+    book.isRead = !book.isRead;
+    saveLibraryToLocalStorage(library);
+    console.log(book.isRead);
   });
-  removeBookButton.addEventListener('click', () => library.removeBook(book.title));
+  removeBookButton.addEventListener('click', () => {
+    library.removeBook(book.title)
+    saveLibraryToLocalStorage(library);
+  });
 })
 
 
